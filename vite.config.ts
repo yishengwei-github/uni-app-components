@@ -17,7 +17,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@static': path.resolve(__dirname, './src/static'),
-      '@yishengwei/components-ui': path.resolve(
+      '@yishengwei/uni-app-components-ui': path.resolve(
         __dirname,
         './packages/ui'
       )
