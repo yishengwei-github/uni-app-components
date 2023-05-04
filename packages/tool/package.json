@@ -5,8 +5,8 @@
   "keywords": [
     "工具"
   ],
-  "author": "Yshen <yishengwei@pinming.cn>",
-  "license": "ISC",
+  "author": "Yshen <qq348694356@gmail.com>",
+  "license": "MIT",
   "main": "index.ts",
   "types": "index.d.ts",
   "directories": {
@@ -67,5 +67,5 @@
   "bugs": {
     "url": "https://github.com/yishengwei-github/uni-app-components/issues"
   },
-  "gitHead": "538ea270da31d78981a361711c516f7759c64be6"
+  "gitHead": "df789461dc3835e993f8ad2c01a7f83c257a3dfe"
 }
