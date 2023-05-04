@@ -1,6 +1,6 @@
 {
   "name": "@yishengwei/uni-app-components-tool",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "工具集合",
   "keywords": [
     "工具"
@@ -66,5 +66,6 @@
   },
   "bugs": {
     "url": "https://github.com/yishengwei-github/uni-app-components/issues"
-  }
+  },
+  "gitHead": "538ea270da31d78981a361711c516f7759c64be6"
 }
