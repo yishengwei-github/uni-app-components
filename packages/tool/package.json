@@ -47,8 +47,7 @@
     "url": "git+https://github.com/yishengwei-github/uni-app-components.git"
   },
   "scripts": {
-    "test": "jest",
-    "publish": "lerna version && lerna publish from-package"
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/yishengwei-github/uni-app-components/issues"
