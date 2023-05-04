@@ -1,0 +1,56 @@
+{
+  "name": "@yishengwei/uni-app-components-tool",
+  "version": "0.0.0",
+  "description": "工具集合",
+  "keywords": [
+    "工具"
+  ],
+  "author": "Yshen <yishengwei@pinming.cn>",
+  "license": "ISC",
+  "main": "index.ts",
+  "types": "index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "transform": {
+      "^.+\\.tsx?$": ["ts-jest", { "compilerOptions": { "module": "commonjs" } }],
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env", {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.1.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yishengwei-github/uni-app-components.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "publish": "lerna version && lerna publish from-package"
+  },
+  "bugs": {
+    "url": "https://github.com/yishengwei-github/uni-app-components/issues"
+  }
+}

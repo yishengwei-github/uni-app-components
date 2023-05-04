@@ -2,7 +2,7 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-03-20 15:48:19
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-04-26 15:21:47
+ * @LastEditTime: 2023-05-04 09:55:31
  * @FilePath: /uni-app-components/src/pages/index/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import config from "../../../packages/ui/libs/config";
+import config from "../../../packages/ui/lib/config";
 console.log(config["ux-components"]);
 const title = ref("Hello");
 </script>
