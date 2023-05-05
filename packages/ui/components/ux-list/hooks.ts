@@ -2,7 +2,7 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-02-21 10:19:59
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-04-28 14:13:44
+ * @LastEditTime: 2023-05-05 11:04:16
  * @FilePath: /private-mobile-platform/packages/common/components/common/pmslc-list/pmslc-list-hooks.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -19,6 +19,7 @@ export const hookMescrollConfig = (propsConfig: UxListConfig) => {
     const mescroll_class: ComputedRef<ClassType> = computed(() => { return propsConfig?.customClass ?? '' })
     // mescroll的up配置
     const mescroll_up: UnwrapNestedRefs<MescrollUpOpsType> = reactive(propsConfig?.upOps ?? default_upOps(propsConfig))
+    // mescroll的down配置
     const mescroll_down: UnwrapNestedRefs<MescrollDownOpsType> = reactive(propsConfig?.downOps ?? default_downOps(propsConfig))
     const pageData: UxListPageDataType = default_pageStartData(mescroll_up)
     const mescrollRef = ref<MeScroll>()
@@ -45,11 +46,7 @@ export const hookMescrollConfig = (propsConfig: UxListConfig) => {
         }
     }
     const onRefresh = async () => {
-        if (process.env.NODE_ENV === 'development') {
-            console.log('This is a development environment.');
-          } else if (process.env.NODE_ENV === 'production') {
-            console.log('This is a production environment.');
-          }
+        ob.log.c('刷新')
         if (propsConfig?.requestSelf) {
             return
         }

@@ -2,21 +2,27 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-04 09:59:34
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-04 13:59:16
+ * @LastEditTime: 2023-05-05 14:58:58
  * @FilePath: /uni-app-components/packages/tool/index.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: app.use(Tool)
  */
-import uuid from "./lib/uuid"
+import Vue from 'vue'
+import * as ob from './lib/ob'
 
-const install = (Vue) => {
-    const $tool = {
-        uuid
-    };
+declare global {
+    interface Window {
+        ob: any;
+    }
+}
 
-    Vue.config.globalProperties.$tool = $tool;
+const install = (app, options) => {
+    console.log('options', options)
+    app.config.globalProperties.ob = ob;
+    window.ob = ob;
+    // 将ob对象挂载到全局对象上
+    // 定义全局 mixin，将 uni 注册到应用上下文中
 };
 
 export default {
-    uuid,
-    install,
+    install
 };

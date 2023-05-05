@@ -2,12 +2,11 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-04-26 13:40:40
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-04 10:15:06
+ * @LastEditTime: 2023-05-05 10:42:46
  * @FilePath: /uni-app-components/packages/ui/index.d.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 /*
-
 declare module 是 TypeScript 中用来声明外部模块（或库）类型的语法。当我们使用第三方库时，需要在 TypeScript 中声明该库的类型信息，这样 TypeScript 才能正确地进行类型检查和语法提示。
 declare module 的语法如下:
 declare module 'library-name' {
@@ -28,4 +27,4 @@ declare module 'lodash' {
 
 在声明完第三方库的类型信息后，我们就可以在代码中直接使用该库了，同时也能获得 TypeScript 的类型检查和语法提示的支持。
 */
-declare module '@yishengwei/uni-app-components-ui';
+///<reference path="./lib/ob.d.ts" />

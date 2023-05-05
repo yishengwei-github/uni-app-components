@@ -59,10 +59,10 @@ export type MescrollUpOpsType = {
     textColor: string, // 默认值'gray'，下拉文本的颜色 (当bgColor配置了颜色,textColor未配置时,则会默认为白色 1.2.4新增)，支持背景图和渐变: 如 'url(xxx) 0 0/100% 100%', 'linear-gradient(xx)' (1.2.6版本)
     toTop: MescrollUpOpsToTopType, // 默认值{src: null,offset: 1000,duration: 300,zIndex: 9990,right: 20,bottom: 120,safearea: false,width: 72,radius: "50%",left: null}
     empty: MescrollUpOpsEmptyType, // 默认值{use: true,icon: null,tip: "暂无相关数据",btnText: "",fixed: false,top: "100rpx",zIndex: 99}
-    isBoth: boolean, // 上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新
-    isLock: boolean, // 是否锁定上拉加载,如果配置true,则会锁定不可上拉,可通过调用mescroll.lockUpScroll(false)解锁
-    offset: number, // 距底部多远时,触发upCallback ; 1.1.0新增 (仅mescroll-uni生效)mescroll-body配置的是pages.json的 onReachBottomDistance
-    onScroll: boolean, // 是否监听滚动事件, 默认false (仅mescroll-uni可用;mescroll-body是页面的onPageScroll)监听列表滚动是非常耗性能的,很容易出现卡顿,非特殊情况不要配置此项
+    isBoth: boolean, // 默认值false,上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新
+    isLock: boolean, // 默认值false,是否锁定上拉加载,如果配置true,则会锁定不可上拉,可通过调用mescroll.lockUpScroll(false)解锁
+    offset: number, // 默认值150,距底部多远时,触发upCallback ; 1.1.0新增 (仅mescroll-uni生效)mescroll-body配置的是pages.json的 onReachBottomDistance
+    onScroll: boolean, // 默认值false,是否监听滚动事件, 默认false (仅mescroll-uni可用;mescroll-body是页面的onPageScroll)监听列表滚动是非常耗性能的,很容易出现卡顿,非特殊情况不要配置此项
 }
 
 export type MescrollDownOpsType = {}
