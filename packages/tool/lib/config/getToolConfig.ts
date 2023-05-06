@@ -2,32 +2,20 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-04 15:56:35
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-05 11:03:27
+ * @LastEditTime: 2023-05-06 13:59:49
  * @FilePath: /uni-app-components/packages/tool/lib/config.ts
  * @Description: 对于Tool库的全局配置
  */
 import { ToolConfigType } from '../../local/types'
 
-const default_config: ToolConfigType = {
+var value: ToolConfigType = {
     alwaysShowLog: false // log是否总是展示，主要用于非开发环境展示
 }
 
-let value: ToolConfigType = {
-    ...default_config
+export function resetToolConfig(config: ToolConfigType) {
+    Object.assign(value, config)
 }
 
-function reset(config: ToolConfigType) {
-    value = {
-        ...value,
-        ...config
-    }
-}
-
-function get(): ToolConfigType {
+export function getToolConfig() {
     return value
-}
-
-export const config = {
-    reset,
-    get
 }

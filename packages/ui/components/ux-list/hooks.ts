@@ -2,7 +2,7 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-02-21 10:19:59
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-05 11:04:16
+ * @LastEditTime: 2023-05-06 10:05:55
  * @FilePath: /private-mobile-platform/packages/common/components/common/pmslc-list/pmslc-list-hooks.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,6 +11,7 @@ import { UxListConfig, UxListDataType, UxListPageDataType } from './types'
 import { default_upOps, default_downOps, default_pageStartData, default_itemCardStyle, default_itemNormalStyle } from './defaults'
 import { StyleType, ClassType, MescrollUpOpsType, MescrollDownOpsType } from '../types'
 import MeScroll from 'mescroll-uni/mescroll-uni'
+import { log } from '../../lib/utils/utils'
 
 export const hookMescrollConfig = (propsConfig: UxListConfig) => {
     // mescroll的style配置
@@ -46,7 +47,7 @@ export const hookMescrollConfig = (propsConfig: UxListConfig) => {
         }
     }
     const onRefresh = async () => {
-        ob.log.c('刷新')
+        log('刷新')
         if (propsConfig?.requestSelf) {
             return
         }
@@ -60,7 +61,7 @@ export const hookMescrollConfig = (propsConfig: UxListConfig) => {
             total: 1,
             success: true
         }
-        console.log('requestCallback', requestCallback.data)
+        log('requestCallback', requestCallback.data)
         if (params?.current ?? 1 === 1) {
             response.value = requestCallback.data.result
         } else {

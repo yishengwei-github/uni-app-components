@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import config from "../../../packages/ui/lib/config";
+import config from "../../../packages/ui/lib/config/config";
 console.log(config["ux-components"]);
 const title = ref("Hello");
 </script>

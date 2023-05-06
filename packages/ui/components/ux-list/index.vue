@@ -2,9 +2,9 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-02-20 15:43:16
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-05 15:23:11
+ * @LastEditTime: 2023-05-06 10:16:51
  * @FilePath: /private-mobile-platform/packages/common/components/common/list/pmslc-list.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: ux-list,通用的list组件
 -->
 <template>
   <mescroll-body
@@ -45,7 +45,7 @@ import {
   defineAsyncComponent,
 } from "vue";
 import type { UxListConfig } from "./types";
-import { guid } from "../utils";
+import { guid } from "../../lib/utils/utils";
 
 const MescrollBody = defineAsyncComponent(
   () => import("mescroll-uni/mescroll-body.vue")
@@ -69,7 +69,6 @@ const {
 } = hookMescrollConfig(propsConfig);
 
 const computedDataSource = computed(() => {
-  console.log("response", response);
   if (propsConfig?.requestSelf) {
     return propsConfig?.dataSource?.value?.map((it) => {
       return {
@@ -97,16 +96,12 @@ function itemClick(item) {
 
 watch(
   () => computedDataSource.value,
-  (val) => {
-    console.log("computedDataSource", computedDataSource.value);
-  },
+  (val) => {},
   { immediate: true }
 );
 watch(
   () => item_style,
-  (val) => {
-    console.log("item_style", val);
-  },
+  (val) => {},
   { immediate: true }
 );
 </script>
