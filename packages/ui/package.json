@@ -19,7 +19,8 @@
   },
   "files": [
     "lib",
-    "components"
+    "components",
+    "index.d.ts"
   ],
   "publishConfig": {
     "access": "public"

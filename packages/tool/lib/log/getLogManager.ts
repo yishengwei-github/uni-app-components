@@ -2,12 +2,12 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-04 16:01:07
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-08 14:12:57
+ * @LastEditTime: 2023-05-08 16:52:35
  * @FilePath: /uni-app-components/packages/tool/lib/log.ts
  * @Description: 日志系统
  */
 import { getEnvironmentInfo } from '../env/getEnvironmentInfo'
-import { getToolConfig } from '../config/getToolConfig'
+import { getToolConfig } from '../config/ToolConfig'
 
 // 常规打印日志
 function c(tag: string, any?: any) {

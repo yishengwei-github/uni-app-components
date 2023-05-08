@@ -56,7 +56,8 @@
     "ts-jest": "^29.1.0"
   },
   "files": [
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",

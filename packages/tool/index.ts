@@ -2,21 +2,18 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-04 09:59:34
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-08 16:20:26
+ * @LastEditTime: 2023-05-08 17:12:07
  * @FilePath: /uni-app-components/packages/tool/index.ts
  * @Description: 
  */
 
-import * as ToolConfig from './lib/config/ToolConfig'
-import * as getEnvironmentInfo from './lib/env/getEnvironmentInfo'
-import * as getLogManager from './lib/log/getLogManager'
-import * as UUID from './lib/uuid/UUID'
+import * as Tools from './lib/tools'
 
-export const all = { ToolConfig, getEnvironmentInfo, getLogManager, UUID }
-
-export const install = (Vue) => {
+const install = (Vue) => {
     if (typeof uni.$ob === 'undefined') {
-        uni.$ob = {}
+        uni.$ob = {} as UniNamespace.OB
     }
-    Object.assign(uni.$ob, all)
+    Object.assign(uni.$ob, { ...Tools })
 };
+
+export default install
