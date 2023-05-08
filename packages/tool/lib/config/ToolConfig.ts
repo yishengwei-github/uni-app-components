@@ -6,7 +6,7 @@
  * @FilePath: /uni-app-components/packages/tool/lib/config.ts
  * @Description: 对于Tool库的全局配置
  */
-import { ToolConfigType } from '../../local/types'
+import { ToolConfigType } from '../types'
 
 var value: ToolConfigType = {
     alwaysShowLog: false // log是否总是展示，主要用于非开发环境展示

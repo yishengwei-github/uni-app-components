@@ -7,9 +7,16 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { UXComponentType } from '../enums/enums'
+import { UiConfigType } from '../types'
 
-const config = {
-    "ux-components": UXComponentType.UVIEW2 // UX使用的组件库
+var value: UiConfigType = {
+    uxComponents: UXComponentType.UVIEW2 // UX使用的组件库
 }
 
-export default config
+export function resetUiConfig(config: UiConfigType) {
+    Object.assign(value, config)
+}
+
+export function getUiConfig() {
+    return value
+}

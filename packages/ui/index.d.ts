@@ -29,4 +29,4 @@ declare module 'lodash' {
 在声明完第三方库的类型信息后，我们就可以在代码中直接使用该库了，同时也能获得 TypeScript 的类型检查和语法提示的支持。
 */
 /// <reference types="./components/mescroll-body.vue.d.ts" />
-/// <reference types="@yishengwei/uni-app-components-tool" />
+/// <reference types="@yishengwei/uni-app-components-types" />
