@@ -2,23 +2,23 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-08 17:33:19
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-09 14:48:47
+ * @LastEditTime: 2023-05-09 15:28:42
  * @FilePath: /uni-app-components/packages/ui/components/ux-form/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <u-icon
+  <ux-icon
     v-if="view_type === 'icon'"
     :style="view_style"
     :class="view_class"
     :name="icon.name"
-  ></u-icon>
-  <u-button
+  ></ux-icon>
+  <ux-button
     v-if="view_type === 'button'"
     :style="view_style"
     :class="view_class"
     :type="button.type"
-    >111</u-button
+    >111</ux-button
   >
 </template>
 <script setup lang="ts">
@@ -28,7 +28,7 @@
 import { inject, watch, ref, defineAsyncComponent, reactive } from "vue";
 import { UxViewType, UxIconType, UxButtonType } from "./types";
 import { hookViewConfigCommon, hookViewConfigProps } from "./hooks";
-import { uIcon, uButton } from "./imports";
+import { uxIcon, uxButton } from "./imports";
 const props = defineProps({
   config: { type: Object, default: {}, required: true },
 });
