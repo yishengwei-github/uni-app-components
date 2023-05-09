@@ -6,13 +6,17 @@
  * @FilePath: /private-mobile-platform/packages/common/components/common/pmslc-list/pmslc-list-hooks.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { computed, reactive, ref, Ref, ComputedRef, UnwrapNestedRefs } from 'vue'
+import { computed, reactive, ref, Ref, ComputedRef, defineAsyncComponent } from 'vue'
 import { UxListConfig, UxListDataType, UxListPageDataType } from './types'
 import { default_upOps, default_downOps, default_pageStartData, default_itemCardStyle, default_itemNormalStyle } from './defaults'
 import { StyleType, ClassType, MescrollUpOpsType, MescrollDownOpsType } from '../types'
 import MeScroll from 'mescroll-uni/mescroll-uni'
 import { log } from '../../lib/utils/utils'
 
+export const MescrollBody = defineAsyncComponent(
+    () => import("mescroll-uni/mescroll-body.vue")
+);
+  
 // mescroll组件相关配置
 export const hookMescrollConfig = (propsConfig: UxListConfig) => {
     // mescroll的up配置

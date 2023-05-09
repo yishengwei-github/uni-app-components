@@ -2,7 +2,7 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-02-20 15:43:16
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-08 14:02:05
+ * @LastEditTime: 2023-05-09 10:46:40
  * @FilePath: /private-mobile-platform/packages/common/components/common/list/pmslc-list.vue
  * @Description: ux-list,通用的list组件
 -->
@@ -41,17 +41,13 @@
   </mescroll-body>
 </template>
 <script setup lang="ts">
-import { hookMescrollConfig, hookItemConfig } from "./hooks";
+import { MescrollBody, hookMescrollConfig, hookItemConfig } from "./hooks";
 // 这里可以导入其他文件（比如：组件，工具 js，第三方插件 js，json 文件，图片文件等等）
 // 例如：import '组件名称' from '组件路径';
 // import 引入的组件需要注入到对象中才能使用
 import { watch, computed, defineAsyncComponent } from "vue";
 import type { UxListConfig } from "./types";
 import { guid } from "../../lib/utils/utils";
-
-const MescrollBody = defineAsyncComponent(
-  () => import("mescroll-uni/mescroll-body.vue")
-);
 
 const props = defineProps({
   config: { type: Object, default: {}, required: true },
