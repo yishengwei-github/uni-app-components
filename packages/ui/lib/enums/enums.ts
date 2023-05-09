@@ -8,5 +8,5 @@
  */
 // 因为有组合需要，所以赋值需要按规律1,2,4,8,16......
 export enum UXComponentType {
-    UVIEW2 = 1
+    VKUVIEW = 1
 }
