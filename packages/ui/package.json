@@ -20,7 +20,9 @@
   "files": [
     "lib",
     "components",
-    "index.d.ts"
+    "index.d.ts",
+    "index.scss",
+    "theme.scss"
   ],
   "publishConfig": {
     "access": "public"
