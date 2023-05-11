@@ -23,11 +23,11 @@
  *  }]
  * }]
  */
-import { defineAsyncComponent } from "vue";
+import { defineComponent } from "vue";
 import { UxGeneralType } from "./types";
 import { computedDataSource } from "./hooks";
 import { log } from "../../lib/utils/utils";
-const uxView = defineAsyncComponent(() => import("../ux-view/index.vue"));
+const uxView = defineComponent(() => import("../ux-view/index.vue"));
 export default {
   name: "uxGeneral",
   props: {

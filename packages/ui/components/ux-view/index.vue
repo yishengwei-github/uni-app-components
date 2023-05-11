@@ -24,7 +24,7 @@
   </template>
 </template>
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import { getUiConfig } from "../../lib/config/UiConfig";
 import { UXComponentEnum } from "../../lib/enums/enums";
 import { UxViewType } from "./types";
@@ -35,7 +35,7 @@ import {
   getUxComponentEnumMaxValue,
   getUxComponentEnumTotalValue,
 } from "../../lib/utils/utils";
-const uview = defineAsyncComponent(() => import("./uview/index.vue"));
+const uview = defineComponent(() => import("./uview/index.vue"));
 const props = defineProps({
   config: { type: Object, default: {}, required: true },
 });
