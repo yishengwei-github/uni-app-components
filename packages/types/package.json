@@ -1,6 +1,6 @@
 {
   "name": "@yishengwei/uni-app-components-types",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "uni-app-components types",
   "author": "Yshen <yishengwei@pinming.cn>",
   "homepage": "https://github.com/yishengwei-github/uni-app-components#readme",
@@ -27,5 +27,5 @@
   "bugs": {
     "url": "https://github.com/yishengwei-github/uni-app-components/issues"
   },
-  "gitHead": "fb4768263df31c2ec8047b021e46031f5dfbd18d"
+  "gitHead": "8fde38e0a32cd914aafa90f7e963669b8b50fb8f"
 }
