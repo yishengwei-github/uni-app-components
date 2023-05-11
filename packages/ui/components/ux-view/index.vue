@@ -2,26 +2,26 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-08 17:33:19
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-11 15:55:02
+ * @LastEditTime: 2023-05-11 17:03:15
  * @FilePath: /uni-app-components/packages/ui/components/ux-form/index.vue
  * @Description: view包罗所有组件库
  * @TODO: 需要注意所有组件库是可以共存的，比如uxComponents === UXComponentEnum.VKUVIEW | UXComponentEnum.UVIEW2,就同时共存vkuview和uview2
 -->
 <template>
-  <template v-if="uxComponents === UXComponentEnum.VKUVIEW">
+  <view v-if="uxComponents === UXComponentEnum.VKUVIEW">
     <uview :config="props.config">
       <template #default>
         <slot name="default"></slot>
       </template>
     </uview>
-  </template>
-  <template v-else>
+  </view>
+  <view v-else>
     <view
       >没有配置编号为{{ uxComponents }}的UI组件库或该配置不存在编号为{{
         uxComponents
       }}的组件库</view
     >
-  </template>
+  </view>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from "vue";
