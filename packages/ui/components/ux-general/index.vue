@@ -2,20 +2,19 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-08 17:33:19
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-09 16:11:23
+ * @LastEditTime: 2023-05-11 14:09:54
  * @FilePath: /uni-app-components/packages/ui/components/ux-form/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <ux-view :config="item" v-for="item in dataSource" :key="item?.key ?? ''">
-    <ux-general
-      :config="item?.children"
+  <uxView v-for="item in dataSource" :key="item?.key ?? ''" :config="item">
+    <uxGeneral
       v-if="item?.children && item?.children?.length"
-    >
-    </ux-general>
-  </ux-view>
+      :config="item?.children"
+    ></uxGeneral>
+  </uxView>
 </template>
-<script setup lang="ts">
+<script lang="ts">
 /**
  * config= [{
  *  type: 'view'
@@ -24,15 +23,29 @@
  *  }]
  * }]
  */
-import { inject, watch, ref, computed } from "vue";
+import { defineAsyncComponent } from "vue";
 import { UxGeneralType } from "./types";
 import { computedDataSource } from "./hooks";
-
-const props = defineProps({
-  config: { type: Array, default: [], required: true },
-});
-const propsConfig = props.config as Array<UxGeneralType>;
-const dataSource = computedDataSource(propsConfig);
-const emits = defineEmits([""]);
+import { log } from "../../lib/utils/utils";
+const uxView = defineAsyncComponent(() => import("../ux-view/index.vue"));
+export default {
+  name: "uxGeneral",
+  props: {
+    config: { type: Array, default: [], required: true },
+  },
+  components: {
+    uxView,
+  },
+  setup(props) {
+    const propsConfig = props.config as Array<UxGeneralType>;
+    const dataSource = computedDataSource(propsConfig);
+    const uxGeneral = "uxGeneral";
+    log("dataSource", dataSource);
+    return {
+      dataSource,
+      uxGeneral,
+    };
+  },
+};
 </script>
 <style lang="scss" scoped></style>

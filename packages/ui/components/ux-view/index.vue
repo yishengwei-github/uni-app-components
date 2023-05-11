@@ -2,62 +2,82 @@
  * @Author: Yshen yishengwei@pinming.cn
  * @Date: 2023-05-08 17:33:19
  * @LastEditors: Yshen yishengwei@pinming.cn
- * @LastEditTime: 2023-05-09 15:28:42
+ * @LastEditTime: 2023-05-11 11:15:48
  * @FilePath: /uni-app-components/packages/ui/components/ux-form/index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: view包罗所有组件库
+ * @TODO: 需要注意所有组件库是可以共存的，比如uxComponents === UXComponentEnum.VKUVIEW | UXComponentEnum.UVIEW2,就同时共存vkuview和uview2
 -->
 <template>
-  <ux-icon
-    v-if="view_type === 'icon'"
-    :style="view_style"
-    :class="view_class"
-    :name="icon.name"
-  ></ux-icon>
-  <ux-button
-    v-if="view_type === 'button'"
-    :style="view_style"
-    :class="view_class"
-    :type="button.type"
-    >111</ux-button
-  >
+  <template v-if="uxComponents === UXComponentEnum.VKUVIEW">
+    <uview :config="props.config">
+      <template #default>
+        <slot name="default"></slot>
+      </template>
+    </uview>
+  </template>
+  <template v-else>
+    <view
+      >没有配置编号为{{ uxComponents }}的UI组件库或该配置不存在编号为{{
+        uxComponents
+      }}的组件库</view
+    >
+  </template>
 </template>
 <script setup lang="ts">
-// 这里可以导入其他文件（比如：组件，工具 js，第三方插件 js，json 文件，图片文件等等）
-// 例如：import '组件名称' from '组件路径';
-// import 引入的组件需要注入到对象中才能使用
-import { inject, watch, ref, defineAsyncComponent, reactive } from "vue";
-import { UxViewType, UxIconType, UxButtonType } from "./types";
-import { hookViewConfigCommon, hookViewConfigProps } from "./hooks";
-import { uxIcon, uxButton } from "./imports";
+import { computed, defineAsyncComponent } from "vue";
+import { getUiConfig } from "../../lib/config/UiConfig";
+import { UXComponentEnum } from "../../lib/enums/enums";
+import { UxViewType } from "./types";
+import * as uviewImports from "./uview/imports";
+import {
+  log,
+  propsExtend,
+  getUxComponentEnumMaxValue,
+  getUxComponentEnumTotalValue,
+} from "../../lib/utils/utils";
+const uview = defineAsyncComponent(() => import("./uview/index.vue"));
 const props = defineProps({
   config: { type: Object, default: {}, required: true },
 });
 const propsConfig = props.config as UxViewType;
-const { view_type, view_style, view_class } = hookViewConfigCommon(propsConfig);
-var icon;
-var button;
+const uxComponents = computed(() => {
+  let uxComponentsOption = {
+    uxComponents: propsConfig.uxComponents,
+  }; // 获取当前组件的组件库
+  uxComponentsOption = propsExtend(uxComponentsOption, getUiConfig()); // 若没有设置，会用全局配置
+  return getFinalUxComponents(uxComponentsOption.uxComponents);
+});
 
-const emits = defineEmits([""]);
-
-watch(
-  () => view_type.value,
-  (val) => {
-    switch (val) {
-      case "icon":
-        icon = hookViewConfigProps<UxIconType>(
-          props.config.props as UxIconType
-        );
-        break;
-      case "button":
-        button = hookViewConfigProps<UxButtonType>(
-          props.config.props as UxButtonType
-        );
-        break;
-      default:
-        throw new Error("必须定义type指向某个组件，并符合现有组件名称");
-    }
-  },
-  { immediate: true }
-);
+/**
+ * 获取最终定的组件库
+ * @param uxComponents 传入目前暂定的组件库
+ */
+function getFinalUxComponents(
+  uxComponents: UXComponentEnum | number
+): UXComponentEnum {
+  if (uxComponents <= 0 || uxComponents > getUxComponentEnumTotalValue()) {
+    throw new Error("所传组件库配置超出可选范围");
+  }
+  const maxValue = getUxComponentEnumMaxValue(uxComponents);
+  log("uxComponents", uxComponents);
+  if (
+    maxValue === UXComponentEnum.VKUVIEW &&
+    uviewImports.has(propsConfig.type)
+  ) {
+    return UXComponentEnum.VKUVIEW;
+  } else if (
+    maxValue === UXComponentEnum.UVIEW2 &&
+    uviewImports.has(propsConfig.type)
+  ) {
+    return UXComponentEnum.UVIEW2;
+  } else if (
+    maxValue === UXComponentEnum.UVIEW3 &&
+    uviewImports.has(propsConfig.type)
+  ) {
+    return UXComponentEnum.UVIEW3;
+  } else {
+    return getFinalUxComponents(uxComponents - maxValue);
+  }
+}
 </script>
 <style lang="scss" scoped></style>
